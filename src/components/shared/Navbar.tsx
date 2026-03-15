@@ -12,6 +12,14 @@ export interface NavbarProps {
 }
 
 export function Navbar({ links = [], appName = "Greenwoodhub" }: NavbarProps) {
+  const pathname =
+    typeof window !== "undefined" ? window.location.pathname : "";
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-secondary-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -26,7 +34,11 @@ export function Navbar({ links = [], appName = "Greenwoodhub" }: NavbarProps) {
           </div>
           <div className="hidden md:flex items-center space-x-8">
             {links.map((link) => (
-              <NavLink key={link.href} href={link.href}>
+              <NavLink
+                key={link.href}
+                href={link.href}
+                active={isActive(link.href)}
+              >
                 {link.label}
               </NavLink>
             ))}
