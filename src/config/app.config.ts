@@ -36,7 +36,7 @@ const getPhones = (): string[] => {
     phones.push(phone);
     i++;
   }
-  return phones.length > 0 ? phones : ["01010132030", "01110132030"]; // default to one empty if none
+  return phones.length > 0 ? phones : ["01010132030"]; // default to one empty if none
 };
 
 const config: AppConfig = {

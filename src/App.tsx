@@ -1,11 +1,17 @@
 import appConfig from "@/config/app.config";
-import "./App.css";
+import { Layout } from "@/layouts/MainLayout";
+import { HomePage } from "@/pages/HomePage";
 
 function App() {
   return (
-    <>
-      <h1>Welcome to {appConfig.app.name}!</h1>
-    </>
+    <Layout
+      appName={appConfig.app.name}
+      footerDescription="Creating memorable team building experiences and outdoor adventures that bring people together."
+      footerEmail={appConfig.contact.email}
+      footerPhones={appConfig.contact.phones}
+    >
+      <HomePage email={appConfig.contact.email} />
+    </Layout>
   );
 }
 
