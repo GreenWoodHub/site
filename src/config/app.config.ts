@@ -6,6 +6,7 @@ type AppConfig = {
     name: string;
   };
   contact: {
+    location: string;
     email: string;
     phones: string[];
     social: Record<string, string>;
@@ -59,10 +60,13 @@ const config: AppConfig = {
     name: getString("VITE_APP_NAME", "Green Wood Hub"),
   },
   contact: {
+    location: getString("VITE_APP_LOCATION", "Cairo, Egypt"),
     email: getString("VITE_APP_EMAIL", "info@greenwoodhubretreat.com"),
     phones: getPhones(),
     social: getSocials({
-      instagram: getString("VITE_APP_INSTAGRAM", "https://www.instagram.com/"),
+      //   instagram: getString("VITE_APP_INSTAGRAM", "https://www.instagram.com/"),
+      //   linkedin: getString("VITE_APP_LINKEDIN", "https://www.linkedin.com/"),
+      //   whatsapp: getString("VITE_APP_WHATSAPP", "https://www.whatsapp.com/"),
     }),
   },
 };

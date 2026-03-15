@@ -14,9 +14,9 @@ function App() {
   return (
     <Layout
       appName={appConfig.app.name}
-      footerDescription="Creating memorable team building experiences and outdoor adventures that bring people together."
       footerEmail={appConfig.contact.email}
       footerPhones={appConfig.contact.phones}
+      footerLocation={appConfig.contact.location}
       footerSocials={socials}
     >
       <HomePage />

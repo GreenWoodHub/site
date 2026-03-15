@@ -12,6 +12,7 @@ export interface LayoutProps {
   footerLinks?: FooterLink[];
   footerEmail?: string;
   footerPhones?: string[];
+  footerLocation?: string;
   footerDescription?: string;
   footerSocials?: SocialLink[];
   appName?: string;
@@ -20,21 +21,22 @@ export interface LayoutProps {
 export function Layout({
   children,
   navbarLinks = [
-    { label: "About", href: "#about" },
-    { label: "Services", href: "#services" },
+    // { label: "About", href: "#about" },
     { label: "Why Us", href: "#why-us" },
+    { label: "Services", href: "#services" },
   ],
   footerLinks = [
-    { label: "About", href: "#about" },
+    // { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Why Us", href: "#why-us" },
     { label: "Contact", href: "#contact" },
   ],
-  footerEmail = "info@greenwoodhubretreat.com",
-  footerPhones = ["+201010132030"],
+  footerEmail = "info@email.com",
+  footerPhones = ["+201xxxxxxxx"],
+  footerLocation = "Egypt",
   footerDescription = "Creating memorable team building experiences and outdoor adventures that bring people together.",
   footerSocials = [],
-  appName = "Greenwoodhub",
+  appName = "GreenWoodHub",
 }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
@@ -46,6 +48,7 @@ export function Layout({
         links={footerLinks}
         email={footerEmail}
         phones={footerPhones}
+        location={footerLocation}
         socials={footerSocials}
       />
     </div>
