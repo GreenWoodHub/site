@@ -1,21 +1,18 @@
-import { Hero } from "@/components/Hero";
-import { About } from "@/components/About";
-import { Services } from "@/components/Services";
-import { WhyUs } from "@/components/WhyUs";
-import { Contact } from "@/components/Contact";
+import { Hero } from "@/components/home/Hero";
+import { About } from "@/components/home/About";
+import { Services } from "@/components/home/Services";
+import { WhyUs } from "@/components/home/WhyUs";
+import { Contact } from "@/components/home/Contact";
+import appConfig from "@/config/app.config";
 
-interface HomePageProps {
-  email: string;
-}
-
-export function HomePage({ email }: HomePageProps) {
+export function HomePage() {
   return (
     <>
       <Hero />
       <About />
       <Services />
       <WhyUs />
-      <Contact email={email} />
+      <Contact email={appConfig.contact.email} />
     </>
   );
 }

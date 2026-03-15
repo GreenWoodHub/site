@@ -1,16 +1,10 @@
 import type { ReactNode } from "react";
-import { Navbar } from "@/components/shared/Navbar";
-import { Footer } from "@/components/shared/Footer";
-
-export interface NavbarLink {
-  label: string;
-  href: string;
-}
-
-export interface FooterLink {
-  label: string;
-  href: string;
-}
+import { Navbar, type NavbarLink } from "@/components/shared/Navbar";
+import {
+  Footer,
+  type FooterLink,
+  type SocialLink,
+} from "@/components/shared/Footer";
 
 export interface LayoutProps {
   children: ReactNode;
@@ -19,6 +13,7 @@ export interface LayoutProps {
   footerEmail?: string;
   footerPhones?: string[];
   footerDescription?: string;
+  footerSocials?: SocialLink[];
   appName?: string;
 }
 
@@ -36,13 +31,14 @@ export function Layout({
     { label: "Contact", href: "#contact" },
   ],
   footerEmail = "info@greenwoodhubretreat.com",
-  footerPhones = ["01010132030", "01110132030"],
+  footerPhones = ["+201010132030"],
   footerDescription = "Creating memorable team building experiences and outdoor adventures that bring people together.",
+  footerSocials = [],
   appName = "Greenwoodhub",
 }: LayoutProps) {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar links={navbarLinks} />
+      <Navbar links={navbarLinks} appName={appName} />
       <main className="flex-1">{children}</main>
       <Footer
         name={appName}
@@ -50,6 +46,7 @@ export function Layout({
         links={footerLinks}
         email={footerEmail}
         phones={footerPhones}
+        socials={footerSocials}
       />
     </div>
   );

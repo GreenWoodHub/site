@@ -1,3 +1,4 @@
+import { Section, Container, Heading, Text, Badge } from "@/components/ui";
 import {
   ShieldCheckIcon,
   CurrencyDollarIcon,
@@ -63,15 +64,13 @@ const iconMap = {
 
 export function WhyUs() {
   return (
-    <section id="why-us" className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Section id="why-us" background="white" padding="xl">
+      <Container>
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">
-            Why Choose Us
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900">
+          <Badge variant="primary">Why Choose Us</Badge>
+          <Heading size="3xl" className="mt-4">
             The Greenwoodhub Advantage
-          </h2>
+          </Heading>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -85,16 +84,18 @@ export function WhyUs() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold text-secondary-900 mb-2">
+                  <Heading as="h3" size="xl">
                     {feature.title}
-                  </h3>
-                  <p className="text-secondary-600">{feature.description}</p>
+                  </Heading>
+                  <Text color="default" className="mt-2">
+                    {feature.description}
+                  </Text>
                 </div>
               </div>
             );
           })}
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

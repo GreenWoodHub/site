@@ -1,3 +1,11 @@
+import {
+  Section,
+  Container,
+  Heading,
+  Text,
+  Badge,
+  Card,
+} from "@/components/ui";
 import { MapPinIcon } from "@/assets/icons/icons";
 
 interface AboutProps {
@@ -12,36 +20,36 @@ export function About({
   ],
 }: AboutProps) {
   return (
-    <section id="about" className="py-16 sm:py-24 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <Section id="about" background="white" padding="xl">
+      <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div>
-            <span className="inline-block px-4 py-1 bg-primary-100 text-primary-700 rounded-full text-sm font-semibold mb-4">
-              About Us
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-secondary-900">
+            <Badge variant="primary">About Us</Badge>
+            <Heading size="3xl" className="mt-4">
               Creating Moments That Matter
-            </h2>
-            <p className="mt-6 text-lg text-secondary-600 leading-relaxed">
-              <strong className="text-secondary-800">Greenwoodhub</strong> is
-              your trusted partner for organizing exceptional team building
+            </Heading>
+            <Text size="lg" color="default" className="mt-6 leading-relaxed">
+              <span className="font-semibold text-secondary-800">
+                Greenwoodhub
+              </span>{" "}
+              is your trusted partner for organizing exceptional team building
               activities and outdoor experiences. We believe that great teams
               are built through shared adventures and meaningful connections.
-            </p>
-            <p className="mt-4 text-lg text-secondary-600 leading-relaxed">
+            </Text>
+            <Text size="lg" color="default" className="mt-4 leading-relaxed">
               From exciting team challenges to relaxing getaways, we handle
               every detail so you can focus on what matters most — building
               stronger relationships and creating lasting memories.
-            </p>
+            </Text>
             <div className="mt-8 grid grid-cols-3 gap-6">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-3xl font-bold text-primary-600">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-secondary-500 mt-1">
+                  <Text size="sm" color="muted" className="mt-1">
                     {stat.label}
-                  </div>
+                  </Text>
                 </div>
               ))}
             </div>
@@ -50,7 +58,11 @@ export function About({
             <div className="aspect-square rounded-2xl bg-gradient-to-br from-primary-100 to-primary-200 flex items-center justify-center">
               <MapPinIcon className="w-32 h-32 text-primary-400" />
             </div>
-            <div className="absolute -bottom-4 -right-4 bg-white rounded-xl shadow-xl p-4 max-w-xs">
+            <Card
+              className="absolute -bottom-4 -right-4 max-w-xs"
+              padding="md"
+              variant="elevated"
+            >
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-primary-100 rounded-full flex items-center justify-center">
                   <svg
@@ -68,18 +80,16 @@ export function About({
                   </svg>
                 </div>
                 <div>
-                  <div className="font-semibold text-secondary-800">
-                    Professional Planning
-                  </div>
-                  <div className="text-sm text-secondary-500">
+                  <Text weight="semibold">Professional Planning</Text>
+                  <Text size="sm" color="muted">
                     Every detail covered
-                  </div>
+                  </Text>
                 </div>
               </div>
-            </div>
+            </Card>
           </div>
         </div>
-      </div>
-    </section>
+      </Container>
+    </Section>
   );
 }

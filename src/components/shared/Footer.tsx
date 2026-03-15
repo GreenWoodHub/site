@@ -1,17 +1,41 @@
-import { MailIcon, PhoneIcon } from "@/assets/icons/icons";
+import {
+  MailIcon,
+  PhoneIcon,
+  InstagramIcon,
+  FacebookIcon,
+  TwitterIcon,
+  LinkedInIcon,
+  WhatsAppIcon,
+} from "@/assets/icons/icons";
+import { NavLink } from "@/components/ui/NavLink";
 
-interface FooterLink {
+export interface FooterLink {
   label: string;
   href: string;
 }
 
-interface FooterProps {
+export interface SocialLink {
+  name: string;
+  url: string;
+  icon: "instagram" | "facebook" | "twitter" | "linkedin" | "whatsapp";
+}
+
+export interface FooterProps {
   name: string;
   description: string;
   links: FooterLink[];
   email: string;
   phones: string[];
+  socials?: SocialLink[];
 }
+
+const socialIconMap = {
+  instagram: InstagramIcon,
+  facebook: FacebookIcon,
+  twitter: TwitterIcon,
+  linkedin: LinkedInIcon,
+  whatsapp: WhatsAppIcon,
+};
 
 export function Footer({
   name,
@@ -19,6 +43,7 @@ export function Footer({
   links,
   email,
   phones,
+  socials = [],
 }: FooterProps) {
   const currentYear = new Date().getFullYear();
 
@@ -27,22 +52,43 @@ export function Footer({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
-            <span className="font-display text-2xl font-bold text-white">
-              {name}
-            </span>
+            <a href="/" className="inline-block">
+              <span className="font-display text-2xl font-bold text-white hover:text-primary-400 transition-colors">
+                {name}
+              </span>
+            </a>
             <p className="mt-4 text-secondary-400">{description}</p>
+            {socials.length > 0 && (
+              <div className="flex gap-4 mt-4">
+                {socials.map((social) => {
+                  const Icon = socialIconMap[social.icon];
+                  return (
+                    <a
+                      key={social.name}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-secondary-400 hover:text-primary-400 transition-colors"
+                      aria-label={social.name}
+                    >
+                      <Icon className="w-5 h-5" />
+                    </a>
+                  );
+                })}
+              </div>
+            )}
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Quick Links</h4>
             <ul className="space-y-2">
               {links.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <NavLink
                     href={link.href}
-                    className="text-secondary-400 hover:text-primary-400 transition-colors"
+                    className="text-secondary-400 hover:text-primary-400"
                   >
                     {link.label}
-                  </a>
+                  </NavLink>
                 </li>
               ))}
             </ul>
@@ -50,14 +96,24 @@ export function Footer({
           <div>
             <h4 className="font-semibold text-white mb-4">Contact</h4>
             <ul className="space-y-2 text-secondary-400">
-              <li className="flex items-center gap-2">
-                <MailIcon className="w-5 h-5" />
-                {email}
+              <li>
+                <a
+                  href={`mailto:${email}`}
+                  className="flex items-center gap-2 hover:text-primary-400 transition-colors"
+                >
+                  <MailIcon className="w-5 h-5 flex-shrink-0" />
+                  <span>{email}</span>
+                </a>
               </li>
               {phones.map((phone, index) => (
-                <li key={index} className="flex items-center gap-2">
-                  <PhoneIcon className="w-5 h-5" />
-                  {phone}
+                <li key={index}>
+                  <a
+                    href={`tel:${phone}`}
+                    className="flex items-center gap-2 hover:text-primary-400 transition-colors"
+                  >
+                    <PhoneIcon className="w-5 h-5 flex-shrink-0" />
+                    <span>{phone}</span>
+                  </a>
                 </li>
               ))}
             </ul>

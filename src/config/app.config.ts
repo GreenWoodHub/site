@@ -8,9 +8,7 @@ type AppConfig = {
   contact: {
     email: string;
     phones: string[];
-    social: {
-      instagram: string;
-    };
+    social: Record<string, string>;
   };
 };
 
@@ -36,7 +34,21 @@ const getPhones = (): string[] => {
     phones.push(phone);
     i++;
   }
-  return phones.length > 0 ? phones : ["01010132030"]; // default to one empty if none
+  return phones.length > 0 ? phones : ["+201010132030"];
+};
+
+const getSocials = (defaults: Record<string, string> = {}) => {
+  const socials: Record<string, string> = { ...defaults };
+  const prefix = "VITE_APP_SOCIAL_";
+
+  Object.keys(env).forEach((key) => {
+    if (!key.startsWith(prefix)) return;
+    const name = key.slice(prefix.length).toLowerCase();
+    const value = getString(key, "");
+    if (value) socials[name] = value;
+  });
+
+  return socials;
 };
 
 const config: AppConfig = {
@@ -49,9 +61,9 @@ const config: AppConfig = {
   contact: {
     email: getString("VITE_APP_EMAIL", "info@greenwoodhubretreat.com"),
     phones: getPhones(),
-    social: {
+    social: getSocials({
       instagram: getString("VITE_APP_INSTAGRAM", "https://www.instagram.com/"),
-    },
+    }),
   },
 };
 
