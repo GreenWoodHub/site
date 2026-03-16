@@ -7,16 +7,16 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-md hover:shadow-lg",
+          "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-md hover:shadow-lg dark:shadow-none",
         secondary:
-          "bg-secondary-100 text-secondary-800 hover:bg-secondary-200 focus:ring-secondary-400",
+          "bg-secondary-100 text-secondary-800 hover:bg-secondary-200 focus:ring-secondary-400 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600",
         outline:
-          "border-2 border-primary-600 text-primary-600 hover:bg-primary-50 focus:ring-primary-500",
+          "border-2 border-primary-600 text-primary-600 hover:bg-primary-50 focus:ring-primary-500 dark:border-primary-400 dark:text-primary-400 dark:hover:bg-primary-900/30",
         ghost:
-          "text-secondary-600 hover:text-primary-600 hover:bg-secondary-50 focus:ring-secondary-400",
+          "text-secondary-600 hover:text-primary-600 hover:bg-secondary-50 focus:ring-secondary-400 dark:text-slate-400 dark:hover:text-primary-400 dark:hover:bg-slate-800",
         danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500",
         white:
-          "bg-white text-primary-600 hover:bg-primary-50 focus:ring-white/50 shadow-lg hover:shadow-xl",
+          "bg-white text-primary-600 hover:bg-primary-50 focus:ring-white/50 shadow-lg hover:shadow-xl dark:bg-slate-800 dark:text-primary-400 dark:hover:bg-slate-700",
       },
       size: {
         sm: "px-3 py-1.5 text-sm rounded-lg",

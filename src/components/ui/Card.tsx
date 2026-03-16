@@ -8,9 +8,11 @@ export interface CardProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const variants = {
-  default: "bg-white border border-secondary-100",
-  outline: "bg-transparent border-2 border-secondary-200",
-  elevated: "bg-white shadow-lg",
+  default:
+    "bg-white dark:bg-slate-800 border border-secondary-100 dark:border-slate-700",
+  outline: "bg-transparent border-2 border-secondary-200 dark:border-slate-600",
+  elevated:
+    "bg-white dark:bg-slate-800 shadow-lg dark:shadow-none dark:border dark:border-slate-700",
   ghost: "bg-transparent",
 };
 

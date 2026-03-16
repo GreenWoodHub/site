@@ -64,9 +64,12 @@ const config: AppConfig = {
     email: getString("VITE_APP_EMAIL", "info@greenwoodhubretreat.com"),
     phones: getPhones(),
     social: getSocials({
-      //   instagram: getString("VITE_APP_INSTAGRAM", "https://www.instagram.com/"),
-      //   linkedin: getString("VITE_APP_LINKEDIN", "https://www.linkedin.com/"),
-      //   whatsapp: getString("VITE_APP_WHATSAPP", "https://www.whatsapp.com/"),
+        // facebook: getString("VITE_APP_FACEBOOK", "https://www.instagram.com/"),
+        // instagram: getString("VITE_APP_INSTAGRAM", "https://www.instagram.com/"),
+        // linkedin: getString("VITE_APP_LINKEDIN", "https://www.linkedin.com/"),
+        // whatsapp: getString("VITE_APP_WHATSAPP", "https://www.whatsapp.com/"),
+        // meetup: getString("VITE_APP_MEETUP", "https://www.meetup.com/"),
+        // telegram: getString("VITE_APP_TELEGRAM", "https://t.me/"),
     }),
   },
 };

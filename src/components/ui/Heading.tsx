@@ -39,7 +39,7 @@ export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
     return (
       <Component
         ref={ref}
-        className={`font-bold text-secondary-900 ${sizes[size]} ${fonts[font]} ${className || ""}`}
+        className={`font-bold text-secondary-900 dark:text-white ${sizes[size]} ${fonts[font]} ${className || ""}`}
         {...props}
       >
         {children}

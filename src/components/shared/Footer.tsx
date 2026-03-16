@@ -7,6 +7,8 @@ import {
   TwitterIcon,
   LinkedInIcon,
   WhatsAppIcon,
+  TelegramIcon,
+  MeetupIcon,
 } from "@/assets/icons/icons";
 import { NavLink } from "@/components/ui/NavLink";
 
@@ -18,7 +20,14 @@ export interface FooterLink {
 export interface SocialLink {
   name: string;
   url: string;
-  icon: "instagram" | "facebook" | "twitter" | "linkedin" | "whatsapp";
+  icon:
+    | "instagram"
+    | "facebook"
+    | "twitter"
+    | "linkedin"
+    | "whatsapp"
+    | "telegram"
+    | "meetup";
 }
 
 export interface FooterProps {
@@ -37,6 +46,8 @@ const socialIconMap = {
   twitter: TwitterIcon,
   linkedin: LinkedInIcon,
   whatsapp: WhatsAppIcon,
+  telegram: TelegramIcon,
+  meetup: MeetupIcon,
 };
 
 export function Footer({
@@ -51,7 +62,7 @@ export function Footer({
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-secondary-900 py-12">
+    <footer className="bg-slate-900 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-3 gap-8">
           <div>
@@ -60,7 +71,7 @@ export function Footer({
                 {name}
               </span>
             </a>
-            <p className="mt-4 text-secondary-400">{description}</p>
+            <p className="mt-4 text-slate-400">{description}</p>
             {socials.length > 0 && (
               <div className="flex gap-4 mt-4">
                 {socials.map((social) => {
@@ -71,7 +82,7 @@ export function Footer({
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-secondary-400 hover:text-primary-400 transition-colors"
+                      className="text-slate-400 hover:text-primary-400 transition-colors"
                       aria-label={social.name}
                     >
                       <Icon className="w-5 h-5" />
@@ -88,7 +99,7 @@ export function Footer({
                 <li key={link.href}>
                   <NavLink
                     href={link.href}
-                    className="text-secondary-400 hover:text-primary-400"
+                    className="text-slate-400 hover:text-primary-400"
                   >
                     {link.label}
                   </NavLink>
@@ -98,7 +109,7 @@ export function Footer({
           </div>
           <div>
             <h4 className="font-semibold text-white mb-4">Contact</h4>
-            <ul className="space-y-2 text-secondary-400">
+            <ul className="space-y-2 text-slate-400">
               <li className="flex items-center gap-2">
                 <MapPinIcon className="w-5 h-5 flex-shrink-0" />
                 <span>{location}</span>
@@ -126,7 +137,7 @@ export function Footer({
             </ul>
           </div>
         </div>
-        <div className="mt-12 pt-8 border-t border-secondary-800 text-center text-secondary-400">
+        <div className="mt-12 pt-8 border-t border-slate-800 text-center text-slate-400">
           <p>
             &copy; {currentYear} {name}. All rights reserved.
           </p>

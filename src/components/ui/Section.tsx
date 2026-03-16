@@ -7,10 +7,11 @@ export interface SectionProps extends HTMLAttributes<HTMLElement> {
 }
 
 const backgrounds = {
-  white: "bg-white",
-  secondary: "bg-secondary-50",
-  primary: "bg-primary-50",
-  gradient: "bg-gradient-to-br from-primary-50 to-white",
+  white: "bg-white dark:bg-slate-900",
+  secondary: "bg-secondary-50 dark:bg-slate-800",
+  primary: "bg-primary-50 dark:bg-primary-900/20",
+  gradient:
+    "bg-gradient-to-br from-primary-50 to-white dark:from-primary-900/30 dark:to-slate-900",
 };
 
 const paddings = {

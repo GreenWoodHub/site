@@ -15,8 +15,8 @@ export function NavLink({
     <a
       className={`font-medium transition-colors ${
         active
-          ? "text-primary-600"
-          : "text-secondary-600 hover:text-primary-600"
+          ? "text-primary-600 dark:text-primary-400"
+          : "text-secondary-600 hover:text-primary-600 dark:text-slate-400 dark:hover:text-primary-400"
       } ${className || ""}`}
       {...props}
     >
