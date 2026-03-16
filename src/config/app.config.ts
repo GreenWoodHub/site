@@ -31,12 +31,12 @@ const appConfig: AppConfig = {
     location: getEnv("VITE_APP_LOCATION", "Cairo, Egypt"),
     phones: [getEnv("VITE_APP_PHONE", "+201010132030")],
     socials: {
-      facebook: getEnv("VITE_APP_FACEBOOK", "https://facebook.com/"),
-      instagram: getEnv("VITE_APP_INSTAGRAM", "https://instagram.com/"),
-      whatsapp: getEnv("VITE_APP_WHATSAPP", "https://whatsapp.com/"),
-      meetup: getEnv("VITE_APP_MEETUP", "https://meetup.com/"),
-      linkedin: getEnv("VITE_APP_LINKEDIN", "https://linkedin.com/"),
-      telegram: getEnv("VITE_APP_TELEGRAM", "https://telegram.com/"),
+      // facebook: getEnv("VITE_APP_FACEBOOK", "https://facebook.com/"),
+      // instagram: getEnv("VITE_APP_INSTAGRAM", "https://instagram.com/"),
+      // whatsapp: getEnv("VITE_APP_WHATSAPP", "https://whatsapp.com/"),
+      // meetup: getEnv("VITE_APP_MEETUP", "https://meetup.com/"),
+      // linkedin: getEnv("VITE_APP_LINKEDIN", "https://linkedin.com/"),
+      // telegram: getEnv("VITE_APP_TELEGRAM", "https://telegram.com/"),
     },
   },
   navbarLinks: [
