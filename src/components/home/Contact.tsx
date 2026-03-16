@@ -1,11 +1,12 @@
 import { Section, Container, Heading, LinkButton } from "@/components/ui";
-import { MailIcon } from "@/assets/icons/icons";
+import { MailIcon, PhoneIcon } from "@/assets/icons/icons";
 
 interface ContactProps {
   email: string;
+  phones: string[];
 }
 
-export function Contact({ email }: ContactProps) {
+export function Contact({ email, phones }: ContactProps) {
   return (
     <Section
       id="contact"
@@ -26,6 +27,17 @@ export function Contact({ email }: ContactProps) {
               <MailIcon className="w-5 h-5" />
               {email}
             </LinkButton>
+            {phones.map((phone) => (
+              <LinkButton
+                key={phone}
+                href={`tel:${phone}`}
+                size="lg"
+                variant="white"
+              >
+                <PhoneIcon className="w-5 h-5" />
+                {phone}
+              </LinkButton>
+            ))}
           </div>
         </div>
       </Container>

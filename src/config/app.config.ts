@@ -1,77 +1,55 @@
-type AppConfig = {
-  appEnv: string;
-  appUrl: string;
-  appPort: number;
-  app: {
-    name: string;
-  };
-  contact: {
-    location: string;
-    email: string;
-    phones: string[];
-    social: Record<string, string>;
-  };
-};
+export interface Link {
+  label: string;
+  href: string;
+}
+
+export interface ContactConfig {
+  email: string;
+  location: string;
+  phones: string[];
+  socials: Record<string, string>;
+}
+
+export interface AppConfig {
+  name: string;
+  contact: ContactConfig;
+  navbarLinks: Link[];
+  footerLinks: Link[];
+  footerDescription: string;
+}
 
 const env = import.meta.env;
 
-const getString = (key: string, fallback: string) => {
-  return (env[key] as string) ?? fallback;
+const getEnv = (key: string, fallback: string): string => {
+  return env[key] ?? fallback;
 };
 
-const getNumber = (key: string, fallback: number) => {
-  const value = env[key];
-  if (value == null || value === "") return fallback;
-  const parsed = Number(value);
-  return Number.isFinite(parsed) ? parsed : fallback;
-};
-
-const getPhones = (): string[] => {
-  const phones: string[] = [];
-  let i = 1;
-  while (true) {
-    const phone = getString(`VITE_APP_PHONE_${i}`, "");
-    if (!phone) break;
-    phones.push(phone);
-    i++;
-  }
-  return phones.length > 0 ? phones : ["+201010132030"];
-};
-
-const getSocials = (defaults: Record<string, string> = {}) => {
-  const socials: Record<string, string> = { ...defaults };
-  const prefix = "VITE_APP_SOCIAL_";
-
-  Object.keys(env).forEach((key) => {
-    if (!key.startsWith(prefix)) return;
-    const name = key.slice(prefix.length).toLowerCase();
-    const value = getString(key, "");
-    if (value) socials[name] = value;
-  });
-
-  return socials;
-};
-
-const config: AppConfig = {
-  appEnv: getString("VITE_APP_ENV", "development"),
-  appUrl: getString("VITE_APP_URL", "http://localhost"),
-  appPort: getNumber("VITE_APP_PORT", 5173),
-  app: {
-    name: getString("VITE_APP_NAME", "Green Wood Hub"),
-  },
+const appConfig: AppConfig = {
+  name: getEnv("VITE_APP_NAME", "Greenwood Hub"),
   contact: {
-    location: getString("VITE_APP_LOCATION", "Cairo, Egypt"),
-    email: getString("VITE_APP_EMAIL", "info@greenwoodhubretreat.com"),
-    phones: getPhones(),
-    social: getSocials({
-        // facebook: getString("VITE_APP_FACEBOOK", "https://www.instagram.com/"),
-        // instagram: getString("VITE_APP_INSTAGRAM", "https://www.instagram.com/"),
-        // linkedin: getString("VITE_APP_LINKEDIN", "https://www.linkedin.com/"),
-        // whatsapp: getString("VITE_APP_WHATSAPP", "https://www.whatsapp.com/"),
-        // meetup: getString("VITE_APP_MEETUP", "https://www.meetup.com/"),
-        // telegram: getString("VITE_APP_TELEGRAM", "https://t.me/"),
-    }),
+    email: getEnv("VITE_APP_EMAIL", "info@greenwoodhubretreat.com"),
+    location: getEnv("VITE_APP_LOCATION", "Cairo, Egypt"),
+    phones: [getEnv("VITE_APP_PHONE", "+201010132030")],
+    socials: {
+      facebook: getEnv("VITE_APP_FACEBOOK", "https://facebook.com/"),
+      instagram: getEnv("VITE_APP_INSTAGRAM", "https://instagram.com/"),
+      whatsapp: getEnv("VITE_APP_WHATSAPP", "https://whatsapp.com/"),
+      meetup: getEnv("VITE_APP_MEETUP", "https://meetup.com/"),
+      linkedin: getEnv("VITE_APP_LINKEDIN", "https://linkedin.com/"),
+      telegram: getEnv("VITE_APP_TELEGRAM", "https://telegram.com/"),
+    },
   },
+  navbarLinks: [
+    { label: "Why Us", href: "#why-us" },
+    { label: "Services", href: "#services" },
+  ],
+  footerLinks: [
+    { label: "Services", href: "#services" },
+    { label: "Why Us", href: "#why-us" },
+    { label: "Contact", href: "#contact" },
+  ],
+  footerDescription:
+    "Creating memorable team building experiences and outdoor adventures that bring people together.",
 };
 
-export default config;
+export default appConfig;

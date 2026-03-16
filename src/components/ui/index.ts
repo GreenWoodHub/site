@@ -11,3 +11,5 @@ export { Badge, type BadgeProps } from "./Badge";
 export { Heading, type HeadingProps } from "./Heading";
 export { Text, type TextProps } from "./Text";
 export { IconButton, type IconButtonProps } from "./IconButton";
+export { NavLink, type NavLinkProps } from "./NavLink";
+export { DarkModeToggle } from "./DarkModeToggle";

@@ -1,5 +1,5 @@
 import { SunIcon, MoonIcon } from "@/assets/icons/icons";
-import { useTheme } from "@/contexts/ThemeContext";
+import { useTheme } from "@/hooks/useTheme";
 
 export function DarkModeToggle() {
   const { theme, toggleTheme } = useTheme();
