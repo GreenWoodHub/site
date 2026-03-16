@@ -22,10 +22,17 @@ export function Contact({ email, phones }: ContactProps) {
             Let's create an unforgettable experience for your team. Contact us
             today for a free consultation.
           </p>
-          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-            <LinkButton href={`mailto:${email}`} size="lg" variant="white">
-              <MailIcon className="w-5 h-5" />
-              {email}
+          <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
+            <LinkButton
+              href={`mailto:${email}`}
+              size="lg"
+              variant="white"
+              className="whitespace-nowrap"
+            >
+              <MailIcon className="w-5 h-5 flex-shrink-0" />
+              <span className="truncate max-w-[200px] sm:max-w-none">
+                {email}
+              </span>
             </LinkButton>
             {phones.map((phone) => (
               <LinkButton
@@ -33,9 +40,10 @@ export function Contact({ email, phones }: ContactProps) {
                 href={`tel:${phone}`}
                 size="lg"
                 variant="white"
+                className="whitespace-nowrap"
               >
-                <PhoneIcon className="w-5 h-5" />
-                {phone}
+                <PhoneIcon className="w-5 h-5 flex-shrink-0" />
+                <span>{phone}</span>
               </LinkButton>
             ))}
           </div>

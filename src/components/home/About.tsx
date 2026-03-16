@@ -41,7 +41,7 @@ export function About({
               every detail so you can focus on what matters most — building
               stronger relationships and creating lasting memories.
             </Text>
-            <div className="mt-8 grid grid-cols-3 gap-6">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <div className="text-3xl font-bold text-primary-600">
