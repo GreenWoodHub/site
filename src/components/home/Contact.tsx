@@ -1,5 +1,5 @@
 import { Section, Container, Heading, LinkButton } from "@/components/ui";
-import { MailIcon, PhoneIcon } from "@/assets/icons/icons";
+import { MailIcon, PhoneIcon, WhatsAppIcon } from "@/assets/icons/icons";
 
 interface ContactProps {
   email: string;
@@ -23,16 +23,9 @@ export function Contact({ email, phones }: ContactProps) {
             today for a free consultation.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-stretch sm:items-center">
-            <LinkButton
-              href={`mailto:${email}`}
-              size="lg"
-              variant="white"
-              className="whitespace-nowrap"
-            >
+            <LinkButton href={`mailto:${email}`} size="lg" variant="white">
               <MailIcon className="w-5 h-5 flex-shrink-0" />
-              <span className="truncate max-w-[200px] sm:max-w-none">
-                {email}
-              </span>
+              <span>Contact via email</span>
             </LinkButton>
             {phones.map((phone) => (
               <LinkButton
@@ -40,12 +33,15 @@ export function Contact({ email, phones }: ContactProps) {
                 href={`tel:${phone}`}
                 size="lg"
                 variant="white"
-                className="whitespace-nowrap"
               >
                 <PhoneIcon className="w-5 h-5 flex-shrink-0" />
-                <span>{phone}</span>
+                <span>Contact via phone</span>
               </LinkButton>
             ))}
+            <LinkButton href={`https://wa.me/${phones[0]}/?text=Hello, I'm interested in your services.`} size="lg" variant="white">
+              <WhatsAppIcon fill="currentColor" className="w-5 h-5 flex-shrink-0" />
+              <span>Contact via whatsapp</span>
+            </LinkButton>
           </div>
         </div>
       </Container>

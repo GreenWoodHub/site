@@ -18,27 +18,24 @@ export interface AppConfig {
   footerDescription: string;
 }
 
-const env = import.meta.env;
-
-const getEnv = (key: string, fallback: string): string => {
-  return env[key] ?? fallback;
-};
-
 const appConfig: AppConfig = {
-  name: getEnv("VITE_APP_NAME", "Greenwood Hub"),
+  name: import.meta.env.VITE_APP_NAME ?? "Greenwood Hub",
   contact: {
-    email: getEnv("VITE_APP_EMAIL", "info@greenwoodhubretreat.com"),
-    location: getEnv("VITE_APP_LOCATION", "Cairo, Egypt"),
-    phones: [getEnv("VITE_APP_PHONE", "+201010132030")],
+    email: import.meta.env.VITE_APP_EMAIL ?? "info@greenwoodhubretreat.com",
+    location: import.meta.env.VITE_APP_LOCATION ?? "Cairo, Egypt",
+    phones: import.meta.env.VITE_APP_PHONES?.split(",").map((p: string) =>
+      p.trim(),
+    ) ?? ["+201010132030"],
     socials: {
-      // facebook: getEnv("VITE_APP_FACEBOOK", "https://facebook.com/"),
-      // instagram: getEnv("VITE_APP_INSTAGRAM", "https://instagram.com/"),
-      // whatsapp: getEnv("VITE_APP_WHATSAPP", "https://whatsapp.com/"),
-      // meetup: getEnv("VITE_APP_MEETUP", "https://meetup.com/"),
-      // linkedin: getEnv("VITE_APP_LINKEDIN", "https://linkedin.com/"),
-      // telegram: getEnv("VITE_APP_TELEGRAM", "https://telegram.com/"),
+      // facebook: import.meta.env.VITE_APP_FACEBOOK ?? "https://facebook.com/",
+      // instagram: import.meta.env.VITE_APP_INSTAGRAM ?? "https://instagram.com/",
+      // whatsapp: import.meta.env.VITE_APP_WHATSAPP ?? "https://whatsapp.com/",
+      // meetup: import.meta.env.VITE_APP_MEETUP ?? "https://meetup.com/",
+      // linkedin: import.meta.env.VITE_APP_LINKEDIN ?? "https://linkedin.com/",
+      // telegram: import.meta.env.VITE_APP_TELEGRAM ?? "https://telegram.com/",
     },
   },
+
   navbarLinks: [
     { label: "Why Us", href: "#why-us" },
     { label: "Services", href: "#services" },
@@ -48,6 +45,7 @@ const appConfig: AppConfig = {
     { label: "Why Us", href: "#why-us" },
     { label: "Contact", href: "#contact" },
   ],
+
   footerDescription:
     "Creating memorable team building experiences and outdoor adventures that bring people together.",
 };

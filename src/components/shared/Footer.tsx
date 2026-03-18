@@ -139,7 +139,7 @@ export function Footer({
         </div>
         <div className="mt-12 pt-8 border-t border-slate-800 text-center text-slate-400">
           <p>
-            &copy; {currentYear} {name}. All rights reserved.
+            &copy; {currentYear} {name}. <br /> All rights reserved.
           </p>
         </div>
       </div>
